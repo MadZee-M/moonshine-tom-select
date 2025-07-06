@@ -1,0 +1,114 @@
+@use 'sass:color';
+
+
+
+
+$select-color-dropdown-item-active: rgb(241 245 249 / 1);
+$select-color-dropdown-item-active-text: rgb(71 85 105 / 1);
+
+$select-padding-x: 10px;
+$select-padding-y: 10px;
+$select-padding-dropdown-item-y: 10px;
+
+@import 'tom-select/src/scss/tom-select';
+
+$bg: rgba(var(--primary),var(--tw-bg-opacity, 1));
+$darkTextColor: rgb(203 213 225 / var(--tw-text-opacity, 1));
+
+
+.#{$select-ns}-dropdown .optgroup-header {
+    opacity: .5;
+    font-size: 90%;
+    padding: 10px 12px;
+    border-bottom: 1px solid rgb(209 213 219 / var(--tw-border-opacity, 1));
+}
+
+.#{$select-ns}-control {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    min-height: 39px;
+
+    .item {
+        font-size: 14px;
+        border-radius: 5px;
+
+        .ts-wrapper.single.selected-empty-value & {
+            opacity: 0.7;
+        }
+    }
+
+    .#{$select-ns}-wrapper.multi & > .item {
+        background: $bg;
+        color: #fff;
+        border: 1px solid $bg;
+        margin: 0;
+
+        &.active {
+            background: $bg;
+            color: #fff;
+            border: 1px solid $bg;
+            opacity: .5;
+        }
+    }
+}
+
+
+// Плагины
+.plugin {
+    &-clear_button {
+        &.has-items .clear-button {
+            opacity: 1;
+            font-size: 16px;
+        }
+        &.selected-empty-value .clear-button {
+            display: none;
+        }
+    }
+}
+
+
+// Конец плагины
+
+
+
+// Темная тема
+.dark {
+    .#{$select-ns}-dropdown {
+        .optgroup-header {
+            border-bottom: 1px solid rgba(var(--dark-200), 1);
+        }
+
+        .active {
+            background-color: rgba(var(--dark-900), .2);
+            color: rgb(148 163 184 / 1);
+        }
+    }
+
+    .#{$select-ns}-control,
+    .#{$select-ns}-wrapper.single.input-active .#{$select-ns}-control,
+    .#{$select-ns}-dropdown,
+    .#{$select-ns}-dropdown .optgroup-header {
+        background-color: rgba(var(--dark-800), 1);
+        color: $darkTextColor;
+    }
+
+    .#{$select-ns}-control,
+    .#{$select-ns}-wrapper.single.input-active .#{$select-ns}-control,
+    .#{$select-ns}-dropdown {
+        border: 1px solid rgba(var(--dark-200), 1);
+    }
+
+    .#{$select-ns}-control input {
+        color: rgb(203 213 225 / 1);
+    }
+
+
+    // Плагины
+    .plugin {
+        &-clear_button.has-items .clear-button {
+            color: #d0d0d0;
+        }
+    }
+    // Конец плагины
+}
