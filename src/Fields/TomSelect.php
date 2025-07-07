@@ -7,8 +7,7 @@ namespace MadZeeM\MoonshineTomSelect\Fields;
 use Closure;
 use Illuminate\Support\Collection;
 use JsonException;
-use MoonShine\AssetManager\Css;
-use MoonShine\AssetManager\Js;
+use MadZeeM\MoonshineTomSelect\Traits\WithAssets;
 use MoonShine\Contracts\UI\HasAsyncContract;
 use MoonShine\UI\Contracts\DefaultValueTypes\CanBeArray;
 use MoonShine\UI\Contracts\DefaultValueTypes\CanBeNumeric;
@@ -41,19 +40,13 @@ class TomSelect extends Field implements
     use HasAsync;
     use UpdateOnPreview;
     use HasPlaceholder;
+    use WithAssets;
 
     protected string $view = 'moonshine-tom-select::fields.select';
 
     protected array $plugins = [];
 
     protected array $settings = [];
-
-    protected function assets(): array {
-        return [
-            Js::make('vendor/moonshine-tom-select/init.min.js'),
-            Css::make('vendor/moonshine-tom-select/tom-select.css'),
-        ];
-    }
 
     protected function resolveRawValue(): mixed {
         return $this->resolvePreview();
