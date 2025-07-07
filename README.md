@@ -19,12 +19,30 @@ composer require MadZee-M/moonshine-tom-select
 use MadZeeM\MoonshineTomSelect\Fields\TomSelect;
 
 
-TomSelect::make('Description')
+TomSelect::make('Select')
 ```
 > Данное поле полностью совместима с текущим основным полем MoonShine, поэтому можно сделать так, для быстрой интеграции:
 > ```diff
 > - use MoonShine\UI\Fields\Select;
 > + use MadZeeM\MoonshineTomSelect\Fields\TomSelect as Select;
+> ```
+
+Также вместо `BelongsTo` и `BelongsToMany` можно воспользоваться
+```php
+use MadZeeM\MoonshineTomSelect\Fields\TomSelectBelongsTo;
+use MadZeeM\MoonshineTomSelect\Fields\TomSelectBelongsToMany;
+
+TomSelectBelongs::make('Select')
+TomSelectBelongsToMany::make('Select')
+```
+
+> И точно также для быстрой интеграции, можно сделать:
+> ```diff
+> - use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+> + use MadZeeM\MoonshineTomSelect\Fields\TomSelectBelongsTo as BelongsTo;
+> 
+> - use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
+> + use MadZeeM\MoonshineTomSelect\Fields\TomSelectBelongsToMany as BelongsToMany;
 > ```
 
 ## Plugins

@@ -150,9 +150,9 @@ export default (asyncUrl = '', settings: UserSettings = {}, plugins: TPluginHash
                         this.$el.dataset.asyncOnInitDropdownWithLoading
                             ? this.selectInstance.load('')
                             : this.asyncSearch()
-
-                        this.selectInstance.off('focus', asyncOnInitFocusCb)
                     }
+
+                    this.selectInstance.off('focus', asyncOnInitFocusCb)
                 }
                 this.selectInstance.on('focus', asyncOnInitFocusCb)
             } else {
