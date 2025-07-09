@@ -12,6 +12,7 @@
 
 <select
         {{ $attributes->merge([
+            'class' => $native ? 'form-select' : null,
             'data-search-enabled' => $searchable,
             'data-remove-item-button' => $attributes->get('multiple', false) || $nullable
         ])->when(!$native, fn($a) => $a->merge([
@@ -40,7 +41,7 @@
             @else
                 <option @selected($optionValue['selected'] || $attributes->get('value', '') == $optionValue['value'])
                         value="{{ $optionValue['value'] }}"
-                        data-custom-properties='@json($optionValue['properties'])'
+                        data-custom-properties='@json(['customProperties' => $optionValue['properties']])'
                 >
                     {{ $optionValue['label'] }}
                 </option>

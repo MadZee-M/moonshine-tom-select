@@ -6,6 +6,7 @@ import { TomOption } from 'tom-select/src/types/core'
 import { crudFormQuery, getQueryString, prepareFormExtraData } from '@moonshine/Support/Forms.js'
 import { dispatchEvents as de } from '@moonshine/Support/DispatchEvents.js'
 import { formToJSON } from 'axios'
+import { getDom } from 'tom-select/src/vanilla'
 
 let pluginInitialize = false
 
@@ -78,6 +79,7 @@ export default (asyncUrl = '', settings: UserSettings = {}, plugins: TPluginHash
 
             disabledField: 'disabled',
             searchField: ['label'],
+            dataAttr: 'customProperties',
 
             ...settings,
 
@@ -90,7 +92,7 @@ export default (asyncUrl = '', settings: UserSettings = {}, plugins: TPluginHash
                     const label = escape(data[this.settings.labelField])
                     const { image } = (data.customProperties || {})
 
-                    return `<div class="flex gap-x-2 items-center">
+                    return `<div class="${image ? 'with-image' : ''}">
                                 ${_this.imageRender(image)}
                                 <div>${label}</div>
                             </div>`
@@ -102,7 +104,7 @@ export default (asyncUrl = '', settings: UserSettings = {}, plugins: TPluginHash
                         : null
                     const { image } = (data.customProperties || {})
 
-                    return `<div class="flex gap-x-2 items-center">
+                    return `<div class="flex gap-x-2 items-center ${image ? 'with-image' : ''}">
                                 ${_this.imageRender(image)}
                                 <div class="flex flex-col gap-2">
                                     <div>${label}</div>
@@ -285,7 +287,7 @@ export default (asyncUrl = '', settings: UserSettings = {}, plugins: TPluginHash
         let result = ''
         if (image) {
             const imageData = this.normalizeImageData(image)
-            result = `<div class="zoom-in overflow-hidden h-${imageData.height} w-${imageData.width}">
+            result = `<div class="zoom-in overflow-hidden rounded-md h-${imageData.height} w-${imageData.width}">
                             <img src="${imageData.src}" class="h-full w-full object-${imageData.objectFit}" alt="" />
                         </div>`
         }
