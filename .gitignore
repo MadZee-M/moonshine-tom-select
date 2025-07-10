@@ -3,6 +3,7 @@ vendor
 composer.lock
 node_modules
 /public/hot
+/public/manifest.json
 .phpunit.result.cache
 .php-cs-fixer.cache
 app

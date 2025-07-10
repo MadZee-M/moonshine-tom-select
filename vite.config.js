@@ -1,11 +1,20 @@
 import { defineConfig } from 'vite'
 import path from 'node:path';
+import laravel from 'laravel-vite-plugin'
 
 export default defineConfig({
+    plugins: [
+        laravel({
+            input: ['resources/js/init.js', 'resources/scss/tom-select.scss'],
+            refresh: true,
+        }),
+    ],
+
     build: {
         emptyOutDir: false,
+        outDir: 'public',
+
         rollupOptions: {
-            input: ['resources/js/init.js', 'resources/scss/tom-select.scss'],
             output: {
                 entryFileNames: `init.min.js`,
                 assetFileNames: file => {
@@ -13,8 +22,6 @@ export default defineConfig({
                 }
             }
         },
-
-        outDir: 'public',
     },
 
     resolve: {
