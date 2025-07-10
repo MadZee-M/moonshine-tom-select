@@ -8,7 +8,8 @@ $select-color-dropdown-item-active-text: rgb(71 85 105 / 1);
 
 $select-padding-x: 10px;
 $select-padding-y: 10px;
-$select-padding-dropdown-item-y: 10px;
+$select-padding-dropdown-item-y: 12px;
+$select-max-height-dropdown: 300px;
 
 @import 'tom-select/src/scss/tom-select';
 
@@ -20,11 +21,17 @@ $darkTextColor: rgb(203 213 225 / var(--tw-text-opacity, 1));
     --ts-pr-caret: 32px;
 }
 
-.#{$select-ns}-dropdown .optgroup-header {
-    opacity: .5;
-    font-size: 90%;
-    padding: 10px 12px;
-    border-bottom: 1px solid rgb(209 213 219 / var(--tw-border-opacity, 1));
+.#{$select-ns}-dropdown {
+    .optgroup-header {
+        opacity: .5;
+        font-size: 90%;
+        padding: 10px 12px;
+        border-bottom: 1px solid rgb(209 213 219 / var(--tw-border-opacity, 1));
+    }
+
+    [data-selectable].option {
+        font-size: 14px;
+    }
 }
 
 .#{$select-ns}-wrapper {
@@ -32,7 +39,7 @@ $darkTextColor: rgb(203 213 225 / var(--tw-text-opacity, 1));
         content: "";
         position: absolute;
         top: 50%;
-        right: $select-padding-x;
+        right: $select-padding-dropdown-item-x;
         height: 8px;
         width: 16px;
         z-index: 1;

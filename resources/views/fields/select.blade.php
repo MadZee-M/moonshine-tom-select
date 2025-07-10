@@ -5,6 +5,9 @@
     'isSearchable' => false,
     'asyncUrl' => '',
     'isNative' => false,
+
+    'settings' => [],
+    'plugins' => [],
 ])
 <x-moonshine-tom-select::fields.select
         :attributes="$attributes"
@@ -13,4 +16,6 @@
         :searchable="$isSearchable"
         :asyncRoute="$asyncUrl"
         :native="$isNative"
+        :settings="$settings"
+        :plugins="$plugins"
 />
